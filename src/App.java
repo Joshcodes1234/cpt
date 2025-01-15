@@ -7,5 +7,5 @@ public class App {
         System.out.print("Enter your name\n> ");
         String name = input.nextLine();
         System.out.println("Hello, " + name + "!");
-    }
+    } 
 }
