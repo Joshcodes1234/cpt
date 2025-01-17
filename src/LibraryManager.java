@@ -1,68 +1,72 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
+
+// public static void main(String[] args) {
+// }
+
 
 public class LibraryManager {
-   
-        private static final int MAX_BOOKS = 50; // Constant for maximum books
-}
+
+ArrayList<Book>books;
 
 
-class Book {
-        private String title;
-        private String author;
-        private boolean isborrowed;
-    
-        public Book(int id, String title, String author) {
-            this.title = title;
-            this.author = author;
-            this.isborrowed = false;
+public LibraryManager() {
+        this.books = new ArrayList<>();
+    }
+
+
+
+public void addResource(Book book) {
+        books.add(book);
+        System.out.println(book.getTitle() + " added to the library.");
+    }
+
+    public void displayAvailableBooks() {
+        System.out.println("Available Books:");
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            if (book.isAvailable()) {
+                System.out.println(book);
+            }
         }
-        // Getters and Setters
-    public String getTitle() {
-        return title;
     }
 
-    public String getAuthor() {
-        return author;
+    public void deleteBook(Book book) {
+        if (books.contains(book)) {  // Check if the book exists in the list
+                books.remove(book);  // Remove the book from the list
+                System.out.println("Book deleted successfully!");
+            } else {
+                System.out.println("Book not found!");  // Print message if the book isn't found
+            }
+        }
+        
+    
+    
+    public void searchBooks(String query) {
+        // ChatGPT helpmed me with this prompt: 
+        List<Book> foundBooks = new ArrayList<>();
+        
+        for (Book book : books) {
+            if (book.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                book.getAuthor().toLowerCase().contains(query.toLowerCase())) {
+                foundBooks.add(book);
+            }
+        }
+        
+        if (foundBooks.isEmpty()) {
+            System.out.println("No books found.");
+        } else {
+            for (Book book : foundBooks) {
+                System.out.println(book);
+            }
+        }
     }
-
-    public boolean isAvailable() {
-        return isborrowed;
-    }
-
-   
-
-    // toString method for easy display of book details
-    @Override
-    public String toString() {
-        return "Book{Title: " + title + ", Author: " + author + ", Available: " + isborrowed + "}";
-    }
-} 
-
-class User {
-    private String name;
-    private int userId;
     
 
-    // Constructor
-    public User(String name, int userId) {
-        this.name = name;
-        this.userId = userId;
-       }
 
-    // Getters and Setters
-    public String getName() {
-        return name;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    // toString method to display user information
-    @Override
-    public String toString() {
-        return "User{Name: " + name + ", ID: " + userId + "}";
-    }
 }
 
 
