@@ -8,6 +8,11 @@ class User {
         this.name = name;
         this.userId = userId;
        }
+       public User(String name) {
+        this.name = name;
+        
+       }
+
 
     // Getters and Setters
     public String getName() {
@@ -21,6 +26,6 @@ class User {
     // toString method to display user information
     @Override
     public String toString() {
-        return "User{Name: " + name + ", ID: " + userId + "}";
+        return String.format("%-10s %-10s\t%-35s\t%-15s", name, userId);
     }
 }
