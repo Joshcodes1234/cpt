@@ -26,6 +26,6 @@ class User {
     // toString method to display user information
     @Override
     public String toString() {
-        return String.format("%-10s %-10s\t%-35s\t%-15s", name, userId);
+        return String.format("%-10s %-10s", name, userId);
     }
 }

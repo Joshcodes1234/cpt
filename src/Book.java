@@ -6,11 +6,11 @@ class Book {
     public Book(String title, String author) {
         this.title = title;
         this.author = author;
-        this.isborrowed = false;
+        this.isborrowed = true;
     }
     public Book(String title) {
         this.title = title;
-        this.isborrowed = false;
+        this.isborrowed = true;
     }
 
     // Getters and Setters
@@ -29,6 +29,6 @@ class Book {
     // toString method for easy display of book details
     @Override
     public String toString() {
-        return String.format("%-10s %-10s\t%-35s\t%-15s", title, author);
+        return String.format("%-10s %-10s", title, author);
     }
 }
